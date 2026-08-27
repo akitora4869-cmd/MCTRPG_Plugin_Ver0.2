@@ -20,13 +20,15 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: maven
+          cache-dependency-path: TRPGCharacter-GitHub-SessionCreateLog/pom.xml
 
       - name: Build with Maven
+        working-directory: TRPGCharacter-GitHub-SessionCreateLog
         run: mvn -B clean package
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: TRPGCharacter-Paper-1.20.1
-          path: target/TRPGCharacter-1.0.0.jar
+          path: TRPGCharacter-GitHub-SessionCreateLog/target/TRPGCharacter-1.0.0.jar
           if-no-files-found: error
